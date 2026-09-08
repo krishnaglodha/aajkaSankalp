@@ -1,0 +1,1 @@
+Jai jinendra, my name is Krishna Lodha, I run a software company [rottengrapes.tech] from Nashik, India and I created this website to make it easy for anyone to take sankalp quickly in their everyday life. for any suggesstion please reach out at krishna@rottengrapes.tech
