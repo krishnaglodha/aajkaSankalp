@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { Focus } from "lucide-react";
 
 interface Bubble {
   id: number;
@@ -27,6 +28,7 @@ const colors = [
 export default function BubbleField({ onSelect }: { onSelect: () => void }) {
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
   const constraintsRef = useRef(null);
+  const dragControls = useAnimation();
 
   useEffect(() => {
     const bubbleCount = 100;
@@ -52,6 +54,10 @@ export default function BubbleField({ onSelect }: { onSelect: () => void }) {
     setBubbles(newBubbles);
   }, []);
 
+  const handleRecenter = () => {
+    dragControls.start({ x: 0, y: 0, transition: { type: "spring", bounce: 0.2, duration: 0.8 } });
+  };
+
   return (
     <motion.div
       ref={constraintsRef}
@@ -66,11 +72,21 @@ export default function BubbleField({ onSelect }: { onSelect: () => void }) {
         </p>
       </div>
 
+      {/* Recenter Button */}
+      <button 
+        onClick={handleRecenter}
+        className="absolute top-24 right-6 md:top-24 md:right-8 z-40 bg-white/80 backdrop-blur-md p-3 rounded-full shadow-lg border border-white/50 text-gray-500 hover:text-orange-500 hover:scale-110 transition-all pointer-events-auto cursor-pointer flex items-center justify-center"
+        title="Recenter View"
+      >
+        <Focus size={24} />
+      </button>
+
       <motion.div
         drag
-        dragConstraints={constraintsRef}
+        dragConstraints={{ top: -800, left: -800, right: 800, bottom: 800 }}
         dragElastic={0.2}
-        className="absolute inset-0 flex items-center justify-center cursor-grab active:cursor-grabbing w-full h-full"
+        animate={dragControls}
+        className="absolute inset-0 flex items-center justify-center cursor-grab active:cursor-grabbing w-full h-full touch-none"
       >
         {/* Center Image */}
         <motion.div
