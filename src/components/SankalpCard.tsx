@@ -10,7 +10,7 @@ interface SankalpCardProps {
 
 export default function SankalpCard({ sankalp, onReset }: SankalpCardProps) {
   const handleShare = () => {
-    const text = `My Sankalp for today is -- ${sankalp}\n\nYou can take your sankalp at - aajkasankalp.in`;
+    const text = `🙏 *My Sankalp for today is* -- ${sankalp} ✨\n\n🎯 You can take your daily sankalp at: https://aajkasankalp.vercel.app/`;
     const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   };
