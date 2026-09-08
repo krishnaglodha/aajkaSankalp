@@ -10,7 +10,7 @@ interface SankalpCardProps {
 
 export default function SankalpCard({ sankalp, onReset }: SankalpCardProps) {
   const handleShare = () => {
-    const text = `🙏 *My Sankalp for today is* -- ${sankalp} ✨\n\n🎯 You can take your daily sankalp at: https://aajkasankalp.vercel.app/`;
+    const text = `*My Sankalp for today is* => ${sankalp} ✨\n\n You can take your daily sankalp at: https://aajkasankalp.vercel.app/`;
     const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   };
@@ -31,7 +31,7 @@ export default function SankalpCard({ sankalp, onReset }: SankalpCardProps) {
 
         <div className="relative z-10">
           <h2 className="text-xl font-medium text-gray-400 tracking-widest uppercase mb-4">आज का संकल्प</h2>
-          
+
           <p className="text-3xl md:text-4xl text-gray-800 font-bold mb-8 leading-tight">
             "{sankalp}"
           </p>
@@ -44,7 +44,7 @@ export default function SankalpCard({ sankalp, onReset }: SankalpCardProps) {
               <MessageCircle size={24} />
               Share on WhatsApp
             </button>
-            
+
             <button
               onClick={onReset}
               className="text-gray-500 hover:text-gray-800 text-sm mt-2 transition-colors underline underline-offset-4"
