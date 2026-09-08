@@ -9,6 +9,7 @@ const kalam = Kalam({
 });
 
 import Navbar from "@/components/Navbar";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Aaj Ka Sankalp",
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-slate-50">
         <Navbar />
         {children}
+        <Analytics />
       </body>
     </html>
   );
